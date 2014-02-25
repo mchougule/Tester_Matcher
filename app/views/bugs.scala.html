@@ -1,0 +1,35 @@
+@(bugs: Map[Integer, List[Bug]])
+
+<script>
+$(document).ready(function() {
+	console.log("hiii");
+	$('.showBugs').click(function() {
+		$('.temp').show();
+	});
+});
+</script>
+
+filed 
+
+@if(bugs.isEmpty()) {
+	No bugs filed
+} else { 
+
+	@for((k, v) <- bugs) {
+		@v.size() bugs 
+		@if(v.size() > 0) {
+			for @v.get(0).device.description<br> 
+		}
+
+
+	<table class="temp" style="display:none" width="500" border="1">
+		
+		<tr>
+		@for(test <- v) {
+			<td>@test.bugId</td>
+		}
+	 </tr></table>
+	}
+
+}
+
