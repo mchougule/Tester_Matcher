@@ -1,0 +1,8 @@
+@(testers: List[Tester])
+
+Here
+<ul>
+@for(tester <- testers) {
+    <li>@tester.testerId  @tester.firstName @tester.lastName</li>
+}
+</ul>

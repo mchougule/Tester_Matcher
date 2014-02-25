@@ -1,0 +1,46 @@
+@(testers: List[Tester], deviName: List[Device])
+
+@link(newCountry:String) = @{
+    // Generate the link
+    controllers.Application.getUsers(newCountry)
+}
+
+@main("Tester Matcher") {
+
+<div id="container">
+
+    <div class="row">
+        <div class="sixcol" align="left">
+            <h4>Find testers, devices and bugs filed by them</h4>
+            <table width="500">
+                <tr><td>
+                    <label>Select a tester</label><br>
+                    <select class="selectTester" multiple size="10" name="testings">
+                        <option value="ALL">ALL</option>
+                        @for(tester <- testers) {
+                            <option value="@tester.country">@tester.country</option>
+                    }
+                    </select>
+                </td>
+                <td>
+                    <label>Select a device</label><br>
+                    <select class="selectDevice" multiple size="10" name="testingDevice">
+                        <option value="ALL" class="getDeviceName">ALL</option>
+                        @for(device <- deviName) {
+                        <option value="@device.deviceId" name="@device.description" class="getDeviceName">@device.description </option>
+                    }
+                    </select>
+                </td>
+                </tr>
+            </table>
+            <button id="ajax">Find related bugs</button>
+
+        </div>
+        <div class="twocol">&nbsp;</div>
+    </div>
+</div>
+<div id="nextContainer">
+    <button class="showBugs" style="display: none">Click here to show bugs</button>
+    <div class="newCol">&nbsp;</div>
+</div>
+}
