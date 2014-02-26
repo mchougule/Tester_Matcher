@@ -5,8 +5,8 @@
 
 create table bug (
   bug_id                    bigint not null,
-  device_device_id          bigint,
-  tester_tester_id          bigint,
+  device_id                 bigint,
+  tester_id                 bigint,
   constraint pk_bug primary key (bug_id))
 ;
 
@@ -45,10 +45,10 @@ create sequence device_seq;
 
 create sequence tester_seq;
 
-alter table bug add constraint fk_bug_device_1 foreign key (device_device_id) references device (device_id) on delete restrict on update restrict;
-create index ix_bug_device_1 on bug (device_device_id);
-alter table bug add constraint fk_bug_tester_2 foreign key (tester_tester_id) references tester (tester_id) on delete restrict on update restrict;
-create index ix_bug_tester_2 on bug (tester_tester_id);
+alter table bug add constraint fk_bug_device_1 foreign key (device_id) references device (device_id) on delete restrict on update restrict;
+create index ix_bug_device_1 on bug (device_id);
+alter table bug add constraint fk_bug_tester_2 foreign key (tester_id) references tester (tester_id) on delete restrict on update restrict;
+create index ix_bug_tester_2 on bug (tester_id);
 
 
 

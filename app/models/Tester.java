@@ -23,6 +23,9 @@ public class Tester extends Model {
 	@ManyToMany(cascade=CascadeType.ALL)
 	public List<Device> devices;
 
+	@OneToMany(mappedBy="tester", cascade=CascadeType.ALL)
+	public List<Bug> bugs;
+
 	// Retrieve testers for country
 	public static List<Tester> findTester(String country) {
 

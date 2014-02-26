@@ -7,6 +7,7 @@ import com.avaje.ebean.annotation.Sql;
 import play.db.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
+import com.avaje.ebean.RawSql.*;
 
 import com.avaje.ebean.*;
 
@@ -17,9 +18,11 @@ public class Bug extends Model {
 	public Long bugId;
 
 	@ManyToOne
+	@JoinColumn(name="device_id", nullable=false)
 	public Device device;
 
 	@ManyToOne
+	@JoinColumn(name="tester_id", nullable=false)
 	public Tester tester;
 
 	public static Finder<Long, Bug> find = new Finder<Long, Bug> (
@@ -29,14 +32,15 @@ public class Bug extends Model {
 	/*
 		Find bugs and return a list of it
 	*/ 
-	public static List<Bug> findBugs(Long id, Long devId) {
+	public static List<Bug> findBugs(Long id, String devName) {
 
-//Ebean.find(Bug.class) 							.fetch("tester", new FetchConfig().query())
-						
+
+
 		// Find bugs from testerId and deviceId
-		List<Bug> bugMe = 	find.where()
+		List<Bug> bugMe = new ArrayList<Bug>();
+		bugMe = find.where()
 							.eq("tester.testerId", id)
-							.eq("device.deviceId", devId)
+							.eq("device.description", devName)
 							.findList();
 		return bugMe;
 

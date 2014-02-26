@@ -29,7 +29,7 @@ public class Application extends Controller {
         List<Tester> tList = Tester.findTester(country);
 
         /* Return the list and render it to testers template */
-        return ok(
+        return ok( 
             testers.render( tList
                 )
             );
@@ -48,7 +48,7 @@ public class Application extends Controller {
         List<Bug> bList = new ArrayList<Bug>();
 
         /*  HashMap with Integer and above List of Bug obejcts. We return this */
-        Map<Integer, List<Bug>> newMap = new HashMap<Integer, List<Bug>>();
+        Map<Integer, List<Bug>> newMap = new LinkedHashMap<Integer, List<Bug>>();
         int counter = 1;
 
         /*
@@ -64,7 +64,7 @@ public class Application extends Controller {
                 counter++;
 
                 /*  Parse the String as Long and call our model */
-                bList = Bug.findBugs(Long.parseLong(t), Long.parseLong(td));
+                bList = Bug.findBugs(Long.parseLong(t), td);
 
                 /*   Put the returned result into the map   */
                 newMap.put(counter, bList);

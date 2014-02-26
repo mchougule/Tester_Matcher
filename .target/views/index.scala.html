@@ -27,7 +27,7 @@
                     <select class="selectDevice" multiple size="10" name="testingDevice">
                         <option value="ALL" class="getDeviceName">ALL</option>
                         @for(device <- deviName) {
-                        <option value="@device.description" name="@device.description" class="getDeviceName">@device.description </option>
+                        <option value="@device.deviceId" name="@device.description" class="getDeviceName">@device.description </option>
                     }
                     </select>
                 </td>
