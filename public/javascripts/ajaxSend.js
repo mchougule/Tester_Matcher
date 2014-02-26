@@ -60,8 +60,6 @@ var i=0;
 								$('.newCol').append("<b>" + tempIDArr[2] + " " + tempIDArr[3] + "</b> " + bugData[j].length);
 								$('.newCol').append(" for " + devID[i] + "<br />"); i++;
 							});
-//							$('.newCol').append("<b>" + tempIDArr[2] + " " + tempIDArr[3]);
-//							$('.newCol').append("</b>" + bugData + " <br>" + devName + " <br><br>");
 						});
 
 					});
