@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # --- Created by Ebean DDL
 # To stop Ebean DDL generation, remove this comment and start using Evolutions
 
@@ -7,6 +8,17 @@ create table bug (
   bug_id                    bigint not null,
   device_id                 bigint,
   tester_id                 bigint,
+=======
+# --- Created by Ebean DDL
+# To stop Ebean DDL generation, remove this comment and start using Evolutions
+
+# --- !Ups
+
+create table bug (
+  bug_id                    bigint not null,
+  device_device_id          bigint,
+  tester_tester_id          bigint,
+>>>>>>> 65458ffc5dae5c3b81e1e63c2fca30bff48df767
   constraint pk_bug primary key (bug_id))
 ;
 
@@ -45,19 +57,32 @@ create sequence device_seq;
 
 create sequence tester_seq;
 
+<<<<<<< HEAD
 alter table bug add constraint fk_bug_device_1 foreign key (device_id) references device (device_id) on delete restrict on update restrict;
 create index ix_bug_device_1 on bug (device_id);
 alter table bug add constraint fk_bug_tester_2 foreign key (tester_id) references tester (tester_id) on delete restrict on update restrict;
 create index ix_bug_tester_2 on bug (tester_id);
+=======
+alter table bug add constraint fk_bug_device_1 foreign key (device_device_id) references device (device_id) on delete restrict on update restrict;
+create index ix_bug_device_1 on bug (device_device_id);
+alter table bug add constraint fk_bug_tester_2 foreign key (tester_tester_id) references tester (tester_id) on delete restrict on update restrict;
+create index ix_bug_tester_2 on bug (tester_tester_id);
+>>>>>>> 65458ffc5dae5c3b81e1e63c2fca30bff48df767
 
 
 
 alter table tester_device add constraint fk_tester_device_tester_01 foreign key (tester_tester_id) references tester (tester_id) on delete restrict on update restrict;
 
 alter table tester_device add constraint fk_tester_device_device_02 foreign key (device_device_id) references device (device_id) on delete restrict on update restrict;
+<<<<<<< HEAD
 
 # --- !Downs
 
+=======
+
+# --- !Downs
+
+>>>>>>> 65458ffc5dae5c3b81e1e63c2fca30bff48df767
 SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists bug;
